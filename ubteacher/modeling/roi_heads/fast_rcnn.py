@@ -35,50 +35,50 @@ class FastRCNNFocaltLossOutputLayers(FastRCNNOutputLayers):
         return losses
 
 
-class FastRCNNFocalLoss(FastRCNNOutputs):
-    """
-    A class that stores information about outputs of a Fast R-CNN head.
-    It provides methods that are used to decode the outputs of a Fast R-CNN head.
-    """
+# class FastRCNNFocalLoss(FastRCNNOutputs):
+#     """
+#     A class that stores information about outputs of a Fast R-CNN head.
+#     It provides methods that are used to decode the outputs of a Fast R-CNN head.
+#     """
 
-    def __init__(
-        self,
-        box2box_transform,
-        pred_class_logits,
-        pred_proposal_deltas,
-        proposals,
-        smooth_l1_beta=0.0,
-        box_reg_loss_type="smooth_l1",
-        num_classes=80,
-    ):
-        super(FastRCNNFocalLoss, self).__init__(
-            box2box_transform,
-            pred_class_logits,
-            pred_proposal_deltas,
-            proposals,
-            smooth_l1_beta,
-            box_reg_loss_type,
-        )
-        self.num_classes = num_classes
+#     def __init__(
+#         self,
+#         box2box_transform,
+#         pred_class_logits,
+#         pred_proposal_deltas,
+#         proposals,
+#         smooth_l1_beta=0.0,
+#         box_reg_loss_type="smooth_l1",
+#         num_classes=80,
+#     ):
+#         super(FastRCNNFocalLoss, self).__init__(
+#             box2box_transform,
+#             pred_class_logits,
+#             pred_proposal_deltas,
+#             proposals,
+#             smooth_l1_beta,
+#             box_reg_loss_type,
+#         )
+#         self.num_classes = num_classes
 
-    def losses(self):
-        return {
-            "loss_cls": self.comput_focal_loss(),
-            "loss_box_reg": self.box_reg_loss(),
-        }
+#     def losses(self):
+#         return {
+#             "loss_cls": self.comput_focal_loss(),
+#             "loss_box_reg": self.box_reg_loss(),
+#         }
 
-    def comput_focal_loss(self):
-        if self._no_instances:
-            return 0.0 * self.pred_class_logits.sum()
-        else:
-            FC_loss = FocalLoss(
-                gamma=1.5,
-                num_classes=self.num_classes,
-            )
-            total_loss = FC_loss(input=self.pred_class_logits, target=self.gt_classes)
-            total_loss = total_loss / self.gt_classes.shape[0]
+#     def comput_focal_loss(self):
+#         if self._no_instances:
+#             return 0.0 * self.pred_class_logits.sum()
+#         else:
+#             FC_loss = FocalLoss(
+#                 gamma=1.5,
+#                 num_classes=self.num_classes,
+#             )
+#             total_loss = FC_loss(input=self.pred_class_logits, target=self.gt_classes)
+#             total_loss = total_loss / self.gt_classes.shape[0]
 
-            return total_loss
+#             return total_loss
 
 
 class FocalLoss(nn.Module):
