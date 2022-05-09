@@ -5,7 +5,7 @@ from torch.nn import functional as F
 
 from detectron2.modeling.roi_heads.fast_rcnn import (
     FastRCNNOutputLayers,
-    FastRCNNOutputs,
+    #FastRCNNOutputs,
 )
 
 # focal loss
