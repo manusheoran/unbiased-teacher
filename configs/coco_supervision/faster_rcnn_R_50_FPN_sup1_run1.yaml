@@ -25,7 +25,7 @@ DATALOADER:
   RANDOM_DATA_SEED: 1
 DATASETS:
   CROSS_DATASET: False
-  TRAIN: ("coco_2017_train",)
+  TRAIN: ("lesion_train",)
   TEST: ("coco_2017_val",)
 SEMISUPNET:
   Trainer: "ubteacher"
