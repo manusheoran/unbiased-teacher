@@ -4,7 +4,7 @@ import logging
 import numpy as np
 from PIL import Image
 import torch
-
+import cv2
 import detectron2.data.detection_utils as utils
 import detectron2.data.transforms as T
 from detectron2.data.dataset_mapper import DatasetMapper
