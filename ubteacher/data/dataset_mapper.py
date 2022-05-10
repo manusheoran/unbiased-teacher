@@ -82,7 +82,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         
         #image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
         im1 = np.load(dataset_dict["file_name"])
-        ims = [im1] + im1 + [im1]
+        ims = [im1] + [im1] + [im1]
         ims = [im.astype(float) for im in ims]
         im = cv2.merge(ims)
         image = im.astype(np.float32, copy=False) 
