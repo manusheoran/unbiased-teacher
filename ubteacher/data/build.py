@@ -41,13 +41,13 @@ def divide_label_unlabel(
     with open(random_data_seed_path) as COCO_sup_file:
         coco_random_idx = json.load(COCO_sup_file)
 
-    labeled_idx = np.array(coco_random_idx[str(SupPercent)][str(random_data_seed)])
-    print('printing label index and num_lable',labeled_idx, num_label)
-    assert labeled_idx.shape[0] == num_label, "Number of READ_DATA is mismatched."
+#     labeled_idx = np.array(coco_random_idx[str(SupPercent)][str(random_data_seed)])
+#     print('printing label index and num_lable',labeled_idx, num_label)
+#     assert labeled_idx.shape[0] == num_label, "Number of READ_DATA is mismatched."
 
     label_dicts = []
     unlabel_dicts = []
-    labeled_idx = set(labeled_idx)
+    labeled_idx = set(np.arange(500))
 
     for i in range(len(dataset_dicts)):
         if i in labeled_idx:
