@@ -51,6 +51,8 @@ def divide_label_unlabel(
 
     for i in range(len(dataset_dicts)):
         if i in labeled_idx:
+            print(dataset_dicts[i],i)
+            print(end)
             label_dicts.append(dataset_dicts[i])
         else:
             unlabel_dicts.append(dataset_dicts[i])
