@@ -344,7 +344,7 @@ class UBTeacherTrainer(DefaultTrainer):
         if output_folder is None:
             output_folder = os.path.join(cfg.OUTPUT_DIR, "inference")
         evaluator_list = []
-        evaluator_type = MetadataCatalog.get(dataset_name).evaluator_type
+        evaluator_type = "coco"#MetadataCatalog.get(dataset_name).evaluator_type
 
         if evaluator_type == "coco":
             evaluator_list.append(COCOEvaluator(
