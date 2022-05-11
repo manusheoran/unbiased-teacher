@@ -102,6 +102,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         transforms = aug_input.apply_augmentations(self.augmentation)
         image_weak_aug, sem_seg_gt = aug_input.image, aug_input.sem_seg
         image_shape = image_weak_aug.shape[:2]  # h, w
+        print('image hsape',image_shape)
 
         if sem_seg_gt is not None:
             dataset_dict["sem_seg"] = torch.as_tensor(sem_seg_gt.astype("long"))
@@ -153,7 +154,9 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         # convert to PIL format first.
         image_pil = Image.fromarray(image_weak_aug.astype("uint8"), "RGB")
         print('printing strong augmentations',self.strong_augmentation)
+        
         image_strong_aug = np.array(self.strong_augmentation(image_pil))
+        print('strong aug image shape',image_strong_aug.shape)
         dataset_dict["image"] = torch.as_tensor(
             np.ascontiguousarray(image_strong_aug.transpose(2, 0, 1))
         )
