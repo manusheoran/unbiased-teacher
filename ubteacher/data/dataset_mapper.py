@@ -98,7 +98,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
             sem_seg_gt = None
 
         aug_input = T.StandardAugInput(image, sem_seg=sem_seg_gt)
-        print('printing augmentations',self.augmentation)
+        #print('printing augmentations',self.augmentation)
         transforms = aug_input.apply_augmentations(self.augmentation)
         image_weak_aug, sem_seg_gt = aug_input.image, aug_input.sem_seg
         image_shape = image_weak_aug.shape[:2]  # h, w
