@@ -9,6 +9,7 @@ import detectron2.data.detection_utils as utils
 import detectron2.data.transforms as T
 from detectron2.data.dataset_mapper import DatasetMapper
 from ubteacher.data.detection_utils import build_strong_augmentation
+from ubteacher.data.datasets.load_windowed_image_array import load_prep_img
 
 
 class DatasetMapperTwoCropSeparate(DatasetMapper):
