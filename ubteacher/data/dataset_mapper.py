@@ -81,11 +81,24 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         dataset_dict = copy.deepcopy(dataset_dict)  # it will be modified by code below
         
         #image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
-        im1 = np.load(dataset_dict["file_name"])
-        ims = [im1] + [im1] + [im1]
-        ims = [im.astype(float) for im in ims]
-        im = cv2.merge(ims)
-        image = im.astype(np.float32, copy=False) 
+        
+        root_dir_path = '/data/LITS/npy_images'
+        slice_intv  = dataset_dict["slice_intv"]
+        im_scale =  dataset_dict["im_scale"] 
+        file_name = dataset_dict["file_name"].split('/')
+
+        #print(file_name,'filename')
+        data_dir = os.path.join(root_dir_path, file_name[3])
+        imname = file_name[4]
+  
+        image = load_prep_img(data_dir, imname, slice_intv,im_scale, num_slice=3)
+
+        
+#         im1 = np.load(dataset_dict["file_name"])
+#         ims = [im1] + [im1] + [im1]
+#         ims = [im.astype(float) for im in ims]
+#         im = cv2.merge(ims)
+#         image = im.astype(np.float32, copy=False) 
 
         
         utils.check_image_size(dataset_dict, image)
