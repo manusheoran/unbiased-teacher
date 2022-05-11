@@ -98,7 +98,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
             sem_seg_gt = None
 
         aug_input = T.StandardAugInput(image, sem_seg=sem_seg_gt)
-        print('printing augmentations',aug_input)
+        print('printing augmentations',self.augmentation)
         transforms = aug_input.apply_augmentations(self.augmentation)
         image_weak_aug, sem_seg_gt = aug_input.image, aug_input.sem_seg
         image_shape = image_weak_aug.shape[:2]  # h, w
@@ -152,6 +152,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         # detectron2, which use numpy format for images. Thus, we need to
         # convert to PIL format first.
         image_pil = Image.fromarray(image_weak_aug.astype("uint8"), "RGB")
+        print('printing strong augmentations',self.strong_augmentation(),self.strong_augmentation)
         image_strong_aug = np.array(self.strong_augmentation(image_pil))
         dataset_dict["image"] = torch.as_tensor(
             np.ascontiguousarray(image_strong_aug.transpose(2, 0, 1))
