@@ -13,6 +13,7 @@ MODEL:
   ROI_HEADS:
     NAME: "StandardROIHeadsPseudoLab"
     LOSS: "FocalLoss"
+OUTPUT_DIR: '/data/nihcc/UBT/LiTS'
 SOLVER:
   LR_SCHEDULER_NAME: "WarmupMultiStepLR"
   STEPS: (15360, 20480)
