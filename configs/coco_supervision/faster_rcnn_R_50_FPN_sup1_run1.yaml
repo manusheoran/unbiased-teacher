@@ -31,7 +31,7 @@ DATALOADER:
 DATASETS:
   CROSS_DATASET: False
   TRAIN: ("lesion_train",)
-  TEST: ("lesion_train",)
+  TEST: ("lesion_test",)
 SEMISUPNET:
   Trainer: "ubteacher"
   BBOX_THRESHOLD: 0.7
@@ -41,4 +41,4 @@ SEMISUPNET:
   UNSUP_LOSS_WEIGHT: 4.0
 
 TEST:
-  EVAL_PERIOD: 10000
+  EVAL_PERIOD: 636
