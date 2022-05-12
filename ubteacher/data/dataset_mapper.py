@@ -169,7 +169,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         # detectron2, which use numpy format for images. Thus, we need to
         # convert to PIL format first.
         image_pil = Image.fromarray(image_weak_aug.astype("uint8"), "RGB")
-        print('printing annos',annos)
+        print('printing annos',instances)
         
         image_strong_aug = np.array(self.strong_augmentation(image_pil))
         #print('strong aug image shape',image_strong_aug.shape)
