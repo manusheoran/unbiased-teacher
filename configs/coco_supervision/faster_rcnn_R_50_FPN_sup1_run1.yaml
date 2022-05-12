@@ -14,7 +14,7 @@ MODEL:
     NAME: "StandardROIHeadsPseudoLab"
     LOSS: "FocalLoss"
     NUM_CLASSES: 1
-OUTPUT_DIR: '/data/nihcc/UBT/LiTS/semi'
+OUTPUT_DIR: '/data/nihcc/UBT/LiTS/semi/temp'
 
 SOLVER:
   LR_SCHEDULER_NAME: "WarmupMultiStepLR"
