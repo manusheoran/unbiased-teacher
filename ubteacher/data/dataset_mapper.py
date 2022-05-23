@@ -98,7 +98,7 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         imname = file_name[1]
         
         
-        #print(data_dir, imname, dataset_dict["file_name"].split('/'))
+        print(data_dir, imname, dataset_dict["file_name"].split('/'))
         image = load_prep_img(data_dir, imname, slice_intv,im_scale, num_slice=3)  ##  load_prep_img
         #image = image.astype(np.uint8)
         
