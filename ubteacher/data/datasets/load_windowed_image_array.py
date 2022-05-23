@@ -48,7 +48,7 @@ def get_slice_name(data_dir, imname, delta=0):
         return imname
     delta = int(delta)
 
-    slice_idx = int(imname[:-4])
+    slice_idx = int(imname) ##int(imname[:-4])
     imname1 =  str(slice_idx + delta) + '.npy'
     
 
