@@ -47,7 +47,8 @@ def divide_label_unlabel(
 
     label_dicts = []
     unlabel_dicts = []
-    labeled_idx =  np.load('/data/LITS/annotations/trainset/LiTS_train_fewshot_10patients.npy')  #set(np.arange(500))
+    labeled_idx =  np.load("KITS/nii_data/KITS/annotations/trainset/KiTS_train_fewshot_10patients")
+    #labeled_idx =  np.load('/data/LITS/annotations/trainset/LiTS_train_fewshot_10patients.npy')  #set(np.arange(500))
 
     for i in range(len(dataset_dicts)):
         if i in labeled_idx:
