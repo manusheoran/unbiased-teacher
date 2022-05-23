@@ -10,6 +10,7 @@ import detectron2.data.transforms as T
 from detectron2.data.dataset_mapper import DatasetMapper
 from ubteacher.data.detection_utils import build_strong_augmentation
 from ubteacher.data.datasets.load_windowed_image_array import load_prep_img
+from ubteacher.data.datasets.load_windowed_image_array_kits import load_prep_img_kits
 
 
 class DatasetMapperTwoCropSeparate(DatasetMapper):
@@ -83,16 +84,22 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
         
         #image = utils.read_image(dataset_dict["file_name"], format=self.img_format)
         
-        root_dir_path = '/data/LITS/npy_images'
+        root_dir_path =  '/data/KITS/nii_data/KITS/npy_images'  # '/data/LITS/npy_images'
         slice_intv  = dataset_dict["slice_intv"]
         im_scale =  dataset_dict["im_scale"] 
         file_name = dataset_dict["file_name"].split('/')
 
         #print(file_name,'filename')
-        data_dir = os.path.join(root_dir_path, file_name[4])
-        imname = file_name[5]
+        ####for LiTS#######
+#         data_dir = os.path.join(root_dir_path, file_name[4])
+#         imname = file_name[5]
+        ####for LiTS#######
+        data_dir = os.path.join(root_dir_path, file_name[0])
+        imname = file_name[1]
+        
+        
         #print(data_dir, imname, dataset_dict["file_name"].split('/'))
-        image = load_prep_img(data_dir, imname, slice_intv,im_scale, num_slice=3)
+        image = load_prep_img_kits(data_dir, imname, slice_intv,im_scale, num_slice=3)  ##  load_prep_img
         #image = image.astype(np.uint8)
         
         image = image.astype('float32')
