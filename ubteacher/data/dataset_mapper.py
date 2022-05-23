@@ -94,11 +94,11 @@ class DatasetMapperTwoCropSeparate(DatasetMapper):
 #         data_dir = os.path.join(root_dir_path, file_name[4])
 #         imname = file_name[5]
         ####for LiTS#######
-        data_dir = os.path.join(root_dir_path, file_name[0])
-        imname = file_name[1]
+        data_dir = os.path.join(root_dir_path, file_name[6])
+        imname = file_name[7]
         
         
-        print(data_dir, imname, dataset_dict["file_name"].split('/'))
+        #print(data_dir, imname, dataset_dict["file_name"].split('/'))
         image = load_prep_img(data_dir, imname, slice_intv,im_scale, num_slice=3)  ##  load_prep_img
         #image = image.astype(np.uint8)
         
