@@ -14,7 +14,7 @@ MODEL:
     NAME: "StandardROIHeadsPseudoLab"
     LOSS: "FocalLoss"
     NUM_CLASSES: 1
-OUTPUT_DIR: '/data/nihcc/UBT/KiTS/exp2'
+OUTPUT_DIR: '/data/nihcc/UBT/KiTS/exp3'
 
 SOLVER:
   LR_SCHEDULER_NAME: "WarmupMultiStepLR"
@@ -38,7 +38,7 @@ SEMISUPNET:
   TEACHER_UPDATE_ITER: 1
   BURN_UP_STEP: 2000
   EMA_KEEP_RATE: 0.9996
-  UNSUP_LOSS_WEIGHT: 4.0
+  UNSUP_LOSS_WEIGHT: 1.0
 
 TEST:
   EVAL_PERIOD: 1000
